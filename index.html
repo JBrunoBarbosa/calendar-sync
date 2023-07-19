@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>CalendarSync</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Calendar Sync</h1>
+    <h5>Adicione atestados de matricula da UFOP e descubra os horarios vagos em comum.</h5>
+    <div class="button-group">
+      <div class="file-input">
+        <input type="file" id="input-arquivos-pdf" multiple>
+        <label for="input-arquivos-pdf">Adicionar Arquivos</label>
+      </div>
+      <button id="btn-enviar">Enviar</button>
+    </div>
+    <div class="container-names">
+      <p id="arquivos-selecionados"></p>
+      <p id="nomes-alunos"></p>
+    </div>
+    <div id="tabela-horarios-vagos"></div>
+    <div id="loading-overlay" style="display: none;">
+      <div id="loading-progress"></div>
+    </div>   
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>

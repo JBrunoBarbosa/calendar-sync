@@ -1,0 +1,153 @@
+body {
+    background-color: #0f0f0f;
+    color: #ffffff;
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  p {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  h5 {
+    text-align: center;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .file-input {
+    margin-right: 10px;
+  }
+  
+  .file-input input[type="file"] {
+    display: none;
+  }
+  
+  .file-input label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #9147ff;
+    color: #ffffff;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  
+  #arquivos-selecionados {
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+  
+  #btn-enviar {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #9147ff;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #3b2a78;
+    background-color: #1e1442;
+  }
+  
+  th,
+  td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #3b2a78;
+    font-size: 14px;
+    color: #ffffff;
+  }
+  
+  th {
+    background-color: #5f43ff;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #2d2153;
+  }
+  .container-names {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    z-index: 9999;
+  }
+  
+  #loading-progress {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 6px solid #ffffff;
+    border-top-color: #9147ff;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Estilos para dispositivos móveis com largura máxima de 600px */
+@media (max-width: 600px) {
+  .texto-componente {
+    font-size: 14px; /* Exemplo de redução de tamanho de fonte */
+    line-height: 1.2; /* Exemplo de ajuste de altura de linha */
+  }
+}
+
+/* Estilos para dispositivos móveis com largura máxima de 480px */
+@media (max-width: 480px) {
+  .texto-componente {
+    font-size: 12px; /* Exemplo de redução de tamanho de fonte */
+    line-height: 1.1; /* Exemplo de ajuste de altura de linha */
+  }
+}
