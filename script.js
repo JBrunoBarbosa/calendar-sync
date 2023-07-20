@@ -1,48 +1,43 @@
+// Função para enviar os arquivos PDF para o endpoint
 async function enviarArquivosPDF(arquivos) {
-  const tabelaContainer = document.getElementById('tabela-horarios-vagos');
-  const endpoint = 'https://jbruno081br.pythonanywhere.com/api/horarios-vagos';
-  const formData = new FormData();
+    
+    const tabelaContainer = document.getElementById('tabela-horarios-vagos');
 
-  for (const arquivo of arquivos) {
-    formData.append('file', arquivo);
-  }
-
-  const loadingOverlay = document.getElementById('loading-overlay');
-  loadingOverlay.style.display = 'flex';
-  tabelaContainer.style.display = 'none';
-
-  try {
-    const startTime = new Date().getTime();
-
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      body: formData,
-    });
-
-    const endTime = new Date().getTime();
-    const requestTime = (endTime - startTime) / 1000; // Tempo em segundos
-
-    if (response.ok) {
-      const tabelaHorariosVagos = await response.json();
-      const dadosAlunos = tabelaHorariosVagos.DadosAlunos;
-      const nomesAlunos = dadosAlunos.map((aluno) => aluno.Nome);
-      const cursosAlunos = dadosAlunos.map((aluno) => aluno.Curso);
-      const tabelaOrdenada = ordenarTabela(tabelaHorariosVagos.TabelaHorariosVagos);
-      exibirTabela(tabelaOrdenada);
-      exibirNomesAlunos(nomesAlunos, cursosAlunos);
-
-      console.log(`Tempo de resposta: ${requestTime} segundos`);
-    } else {
-      console.error('Ocorreu um erro ao enviar os arquivos PDF:', response.status);
+    const endpoint = 'https://jbruno081br.pythonanywhere.com/api/horarios-vagos';
+  
+    const formData = new FormData();
+    for (const arquivo of arquivos) {
+      formData.append('file', arquivo);
     }
-  } catch (error) {
-    console.error('Ocorreu um erro na requisição:', error);
-  } finally {
-    tabelaContainer.style.display = 'flex';
-    loadingOverlay.style.display = 'none';
+  
+    const loadingOverlay = document.getElementById('loading-overlay');
+    loadingOverlay.style.display = 'flex';
+    tabelaContainer.style.display = 'none';
+  
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        body: formData,
+      });
+  
+      if (response.ok) {
+        const tabelaHorariosVagos = await response.json();
+        const dadosAlunos = tabelaHorariosVagos.DadosAlunos;
+        const nomesAlunos = dadosAlunos.map(aluno => aluno.Nome);
+        const cursosAlunos = dadosAlunos.map(aluno => aluno.Curso);
+        const tabelaOrdenada = ordenarTabela(tabelaHorariosVagos.TabelaHorariosVagos);
+        exibirTabela(tabelaOrdenada);
+        exibirNomesAlunos(nomesAlunos, cursosAlunos);
+      } else {
+        console.error('Ocorreu um erro ao enviar os arquivos PDF:', response.status);
+      }
+    } catch (error) {
+      console.error('Ocorreu um erro na requisição:', error);
+    } finally {
+      tabelaContainer.style.display = 'flex';
+      loadingOverlay.style.display = 'none';
+    }
   }
-}
-
   
   // Função para ordenar a tabela pelos dias da semana
   function ordenarTabela(tabelaHorariosVagos) {
